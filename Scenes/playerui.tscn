@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b1hd44ftrhpj"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1724764717]
+
+[node name="Control" type="Control" parent="." unique_id=962188678]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=1061628144]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 11.0
+offset_right = 60.0
+offset_bottom = 60.0
+text = "asdas
+"
