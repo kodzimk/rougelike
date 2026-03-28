@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
-@export var SPEED = 75.0
+@export var SPEED = 62.5
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var direction = 0
@@ -24,22 +24,21 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.play("walk_right")
 		direction_x = 1
 		direction = 0	
-	elif Input.is_action_pressed("move_up"):
-		animated_sprite.play("walk_up")
-		direction_y = -1
-		direction = 2
-	elif Input.is_action_pressed("move_down"):
-		animated_sprite.play("walk_down")
-		direction_y = 1
-		direction = 3
 	
-	if direction_y:
-		velocity.y = direction_y * SPEED
-	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)	
+	if Input.is_action_pressed("move_up"):
+		direction_y = -1
+		if !direction_x:
+			animated_sprite.play("walk_up")
+			direction = 2
+	elif Input.is_action_pressed("move_down"):
+		direction_y = 1
+		if !direction_x:
+			animated_sprite.play("walk_down")
+			direction = 3
+			
 	
 	if direction_x:
-		velocity.x = direction_x * SPEED
+		velocity.x = direction_x * SPEED 
 	else:
 		if direction == 0: 
 			animated_sprite.play("idle_right")
